@@ -18,7 +18,7 @@
     }
 
     .toc-summary {
-        padding: 0 12px;
+        padding: 0 var(--toc-padding);
         display: flex;
         flex-wrap: wrap;
         box-sizing: border-box;

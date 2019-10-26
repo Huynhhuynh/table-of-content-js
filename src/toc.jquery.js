@@ -16,6 +16,7 @@
             target: 'h1,h2,h3,h4,h5,h6',
             default_text: 'Select table of content',
             content_witdh: 680,
+            padding_left_right: 10,
             on_change() { return; },
             on_show() { return; },
             on_hide() { return; },
@@ -68,7 +69,10 @@
             self.$nav.append( `<div class="item" data-toc-key="${ rand_key }"><span></span></div>` );
         } )
 
-        var $temp = $( `<div class="toc-sticky-container" style="--toc-content-width: ${ self.settings.content_witdh }px; ">
+        var $temp = $( `
+        <div
+            class="toc-sticky-container"
+            style="--toc-content-width: ${ self.settings.content_witdh }px; --toc-padding: ${ self.settings.padding_left_right }px;">
             <div class="toc-sticky-container__inner">
                 <div class="toc-summary"></div>
             </div>
