@@ -1,0 +1,14 @@
+{
+  "name": "table-of-content-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "sass src/theme.scss:dist/theme.css --style compressed --watch & sass src/toc.scss:dist/toc.css --style compressed --watch",
+    "start": "npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
