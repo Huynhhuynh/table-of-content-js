@@ -11,6 +11,7 @@
     -webkit-transition: .3s ease;
 
     .toc-sticky-container__inner {
+        width: var(--toc-content-width);
         margin: 0 auto;
         max-width: 100%;
         overflow: hidden;
@@ -33,6 +34,7 @@
             padding-right: 10px;
             max-width: calc(100% - 10px);
             box-sizing: border-box;
+            cursor: pointer;
 
             &:after {
                 content: "";
@@ -43,6 +45,13 @@
                 top: calc(50% - 5px);
                 background: url(images/down.svg) no-repeat center center;
                 background-size: 80%;
+            }
+
+            .text {
+                max-width: 100%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
             }
         }
 
@@ -85,6 +94,61 @@
     }
 }
 
+.toc-select {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    width: 460px;
+    max-width: 100%;
+    background: #FFF;
+    border-radius: 6px;
+    box-shadow: 0px 10px 30px 10px rgba(1,1,1,.1);
+    overflow: auto;
+    max-height: 70vh;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s ease;
+    -webkit-transition: .3s ease;
+
+    @media(max-width: 425px) {
+        transform: translate(0, 0);
+        -webkit-transform: translate(0, 0);
+        left: 0;
+        top: auto;
+        bottom: 0;
+        box-shadow: 0px -10px 30px 10px rgba(1,1,1,.1);
+        border-radius: 10px 10px 0 0;
+    }
+
+    li {
+        list-style: none;
+        padding: 15px;
+        box-sizing: border-box;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        transition: .3s ease;
+        -webkit-transition: .3s ease;
+
+        &:not(:last-child) {
+            border-bottom: solid 1px #eee;
+        }
+
+        &:hover,
+        &.__is-active {
+            background: #f5f5f5;
+        }
+
+        &.__is-active {
+            font-weight: bold;
+        }
+    }
+}
+
 body {
 
     &.toc-show {
@@ -93,6 +157,16 @@ body {
             visibility: visible;
             opacity: 1;
             box-shadow: 0 0 10px 0 rgba(1,1,1,.07);
+        }
+
+
+
+        &.__is-select-show {
+
+            .toc-select {
+                visibility: visible;
+                opacity: 1;
+            }
         }
     }
 }
