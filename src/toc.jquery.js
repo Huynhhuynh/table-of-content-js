@@ -16,6 +16,9 @@
             target: 'h1,h2,h3,h4,h5,h6',
             default_text: 'Select table of content',
             content_witdh: 680,
+            on_change() { return; },
+            on_show() { return; },
+            on_hide() { return; },
         }, settings );
 
         self.target_list = self.$container.find( self.settings.target );
@@ -41,7 +44,7 @@
 
     toc.prototype.toc_sticky_temp = function() {
         var self = this;
-        self.$select = $( '<ul>', {
+        self.$select = $( '<ol>', {
             class: 'toc-select',
         } );
 
@@ -150,11 +153,15 @@
             };
         }
 
+        var save_key = '';
         $( w ).on( {
             'scroll.toc' ( e ) {
                 if( true == in_view() ) {
                     $body.addClass( 'toc-show' );
                     var data = in_content();
+                    self.settings.on_show.call( self, data.key );
+
+                    if( data.key == save_key ) return;
 
                     [self.$nav, self.$select].forEach( function( $item, index  ) {
                         $item
@@ -165,8 +172,16 @@
                     } )
 
                     self.$current.find( '.text' ).text( data.text );
+                    save_key = data.key;
+
+                    if( self.settings.on_change )
+                        self.settings.on_change.call( self, data.key );
+
                 } else {
                     $body.removeClass( 'toc-show' );
+
+                    if( self.settings.on_hide )
+                        self.settings.on_hide.call( self );
                 }
             }
         } )
