@@ -6,12 +6,11 @@ var load_script_func = function( url, callback ) {
     var script = document.createElement('script');
     script.src = url;
     script.type = 'text/javascript';
+    document.head.appendchild(script);
 
     script.onload = function() {
         callback.call( this );
     };
-
-    document.head.appendchild(script);
 }
 
 load_script_func( 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js', function() {
