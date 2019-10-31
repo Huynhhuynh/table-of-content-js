@@ -23,7 +23,7 @@
 <body>
     <div id="page">
         <header id="header"></header>
-        <amp-script layout="container" 3p-lib-src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js, https://huynhhuynh.github.io/table-of-content-js/src/toc.jquery.js" src="https://huynhhuynh.github.io/table-of-content-js/dist/main.js">
+        <amp-script layout="container" script="main-script">
             <main id="main">
                 <p>
                     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -107,5 +107,42 @@
         </amp-script>
         <footer id="footer"></footer>
     </div>
+
+    <script id="main-script" type="text/plain" target="amp-script">
+        var _main = document.getElementById('main');
+        var load_script_func = function( url, callback ) {
+            var script = document.createElement('script');
+            script.src = url;
+            script.type = 'text/javascript';
+
+            script.onload = function() {
+                callback.call( this );
+            };
+
+            _main.appendChild(script);
+        }
+
+        load_script_func( 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js', function() {
+
+            load_script_func( 'https://huynhhuynh.github.io/table-of-content-js/src/toc.jquery.js', function() {
+
+                var $ = window.jQuery;
+
+                $( function() {
+                    new window.table_of_content( $( '#main' ), {
+                        on_show ( key ) {
+                            // console.log( this, key );
+                        },
+                        on_hide () {
+                            // console.log( this, key );
+                        },
+                        on_change ( key ) {
+                            // console.log( this, key );
+                        },
+                    } );
+                } )
+            } )
+        } )
+    </script>
 </body>
 </html>
