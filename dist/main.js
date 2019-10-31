@@ -2,7 +2,7 @@
  *
  */
 
-var _main = document.getElementsByID('main');
+var _main = document.getElementsById('main');
 var load_script_func = function( url, callback ) {
     var script = document.createElement('script');
     script.src = url;
