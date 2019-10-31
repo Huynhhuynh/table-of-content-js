@@ -19,6 +19,7 @@
     </style>
     <script async custom-element="amp-script" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script async custom-element="amp-script" src="https://huynhhuynh.github.io/table-of-content-js/src/toc.jquery.js"></script>
+    <script async custom-element="amp-script" src="https://huynhhuynh.github.io/table-of-content-js/dist/main.js"></script>
 </head>
 <body>
     <div id="page">
@@ -105,21 +106,5 @@
         </main>
         <footer id="footer"></footer>
     </div>
-
-    <script>
-        jQuery( function() {
-            new window.table_of_content( jQuery( '#main' ), {
-                on_show ( key ) {
-                    // console.log( this, key );
-                },
-                on_hide () {
-                    // console.log( this, key );
-                },
-                on_change ( key ) {
-                    // console.log( this, key );
-                },
-            } );
-        } )
-    </script>
 </body>
 </html>
