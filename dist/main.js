@@ -2,7 +2,6 @@
  *
  */
 
-var _main = document.getElementById('main');
 var load_script_func = function( url, callback ) {
     var script = document.createElement('script');
     script.src = url;
@@ -12,7 +11,7 @@ var load_script_func = function( url, callback ) {
         callback.call( this );
     };
 
-    _main.appendChild(script);
+    document.head.appendchild(script);
 }
 
 load_script_func( 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js', function() {
