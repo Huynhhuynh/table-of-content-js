@@ -2,19 +2,19 @@
  *
  */
 
-var load_script_func = function( url, callback ) {
-    var script = document.createElement('script');
-    script.src = url;
-    script.type = 'text/javascript';
-
-    script.onload = function() {
-        callback.call( this );
-    };
-
-    document.getElementsByTagName('head').appendChild(script);
-}
-
 window.onload = function() {
+
+    var load_script_func = function( url, callback ) {
+        var script = document.createElement('script');
+        script.src = url;
+        script.type = 'text/javascript';
+
+        script.onload = function() {
+            callback.call( this );
+        };
+
+        document.getElementsByTagName('head').appendChild(script);
+    }
 
     load_script_func( 'https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js', function() {
 
